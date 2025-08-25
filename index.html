@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Card for Crystal</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .birthday-card {
+        width: 350px;
+        height: 500px;
+        background: linear-gradient(
+          145deg,
+          #ff9a9e 0%,
+          #fecfef 50%,
+          #fecfef 100%
+        );
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+        box-sizing: border-box;
+      }
+
+      .birthday-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-front {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+      }
+
+      .birthday-icon {
+        font-size: 80px;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+      }
+
+      .card-title {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+      }
+
+      .card-subtitle {
+        font-size: 16px;
+        color: #555;
+        font-style: italic;
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ff6b6b;
+        animation: confetti-fall 3s infinite;
+      }
+
+      .confetti:nth-child(2n) {
+        background: #4ecdc4;
+        animation-delay: -0.5s;
+      }
+      .confetti:nth-child(3n) {
+        background: #45b7d1;
+        animation-delay: -1s;
+      }
+      .confetti:nth-child(4n) {
+        background: #f9ca24;
+        animation-delay: -1.5s;
+      }
+      .confetti:nth-child(5n) {
+        background: #6c5ce7;
+        animation-delay: -2s;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-20px);
+        }
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-100vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #a8edea 0%, #fed6e3 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.5s ease;
+        border-radius: 20px;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .message.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .sparkle {
+        position: absolute;
+        color: #ffd700;
+        font-size: 20px;
+        animation: sparkle 1.5s infinite;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+
+      .copyright {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="birthday-card" onclick="showMessage()">
+      <div class="card-front" id="cardFront">
+        <div class="birthday-icon">🎂</div>
+        <div class="card-title">Click to Open!</div>
+        <div class="card-subtitle">A special birthday surprise awaits...</div>
+
+        <!-- Confetti pieces -->
+        <div class="confetti" style="left: 10%; animation-delay: 0s"></div>
+        <div class="confetti" style="left: 20%; animation-delay: -0.3s"></div>
+        <div class="confetti" style="left: 30%; animation-delay: -0.6s"></div>
+        <div class="confetti" style="left: 40%; animation-delay: -0.9s"></div>
+        <div class="confetti" style="left: 50%; animation-delay: -1.2s"></div>
+        <div class="confetti" style="left: 60%; animation-delay: -1.5s"></div>
+        <div class="confetti" style="left: 70%; animation-delay: -1.8s"></div>
+        <div class="confetti" style="left: 80%; animation-delay: -2.1s"></div>
+        <div class="confetti" style="left: 90%; animation-delay: -2.4s"></div>
+      </div>
+
+      <div class="message" id="birthdayMessage">
+        Happy birthday Crystal!! :)
+        <div class="sparkle" style="top: 20%; left: 15%">✨</div>
+        <div
+          class="sparkle"
+          style="top: 30%; right: 20%; animation-delay: 0.5s"
+        >
+          ⭐
+        </div>
+        <div
+          class="sparkle"
+          style="bottom: 25%; left: 20%; animation-delay: 1s"
+        >
+          ✨
+        </div>
+        <div
+          class="sparkle"
+          style="bottom: 35%; right: 15%; animation-delay: 1.5s"
+        >
+          ⭐
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">©2025 Ralph Ayala Jr</div>
+
+    <script>
+      let isMessageShown = false;
+
+      function showMessage() {
+        const cardFront = document.getElementById("cardFront");
+        const message = document.getElementById("birthdayMessage");
+
+        if (!isMessageShown) {
+          // Show the birthday message
+          cardFront.style.opacity = "0";
+          setTimeout(() => {
+            message.classList.add("show");
+            isMessageShown = true;
+          }, 300);
+        } else {
+          // Go back to the front of the card
+          message.classList.remove("show");
+          setTimeout(() => {
+            cardFront.style.opacity = "1";
+            isMessageShown = false;
+          }, 300);
+        }
+      }
+    </script>
+  </body>
+</html>
